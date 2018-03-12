@@ -30,32 +30,46 @@ public class BlogTest {
 		
 	}
 	
-	private BlogDao getBlogDao() {
-		SqlSession session = getSession();
-		return session.getMapper(BlogDao.class);
-	}
 	@Test
 	public void testInsert() {
-		BlogDao blogDao = getBlogDao();
-		Blog blog = new Blog();
-		blog.setId(2);
-		blog.setName("AA");
-		blog.setEmail("29730982739@ww.com");
-		blogDao.insert(blog);
-		System.out.println("插入完成");
+		SqlSession session = getSession();
+		try {
+			BlogDao blogDao = session.getMapper(BlogDao.class);
+			Blog blog = new Blog(2,"AAA","123467@163.com");
+			blogDao.insert(blog);
+			session.commit();
+			System.out.println("插入完成");
+		} finally {
+			session.close();
+		}
+		
 	}
 	
 	@Test
 	public void testFindById() {
-		BlogDao blogDao = getBlogDao();
-		Blog blog = blogDao.findById(1);
-		System.out.println(blog.getEmail());
+		SqlSession session = getSession();
+		try {
+			BlogDao blogDao = session.getMapper(BlogDao.class);
+			Blog blog = blogDao.findById(1);
+			System.out.println(blog.getEmail());
+		} finally {
+			session.close();
+		}
+		
 	}
 	
 	@Test
 	public void testDelete() {
-		BlogDao blogDao = getBlogDao();
-		blogDao.delete(3);
+		SqlSession session = getSession();
+		try {
+			BlogDao blogDao = session.getMapper(BlogDao.class);
+			blogDao.delete(3);
+			session.commit();
+			System.out.println("删除完成");
+		} finally {
+			session.close();
+		}
+		
 		
 	}
 }
