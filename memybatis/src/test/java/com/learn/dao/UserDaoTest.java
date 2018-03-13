@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.learn.entity.User;
 
+//jUnit版本要在4.9以上，spring-juit与Spring版本一致，可正常运行。
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:spring-mybatis.xml" })
 //https://www.cnblogs.com/hellboy0621/p/7423466.html

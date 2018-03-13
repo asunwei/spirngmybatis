@@ -19,7 +19,7 @@
 		INSERT INTO tb_user
 		(user_name,user_birthday,user_salary)
 		VALUES
-		(#{name},#{birthday},s#{salary})
+		(#{name},#{birthday},#{salary})
 	</insert>
 
 	<!-- 修改用户内容 -->
